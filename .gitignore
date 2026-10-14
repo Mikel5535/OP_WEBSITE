@@ -1,0 +1,10 @@
+# Only the website's site files are tracked; everything else here stays local.
+/*
+!/.gitignore
+!/website/
+/website/*
+!/website/index.html
+!/website/track-record.html
+!/website/trade-log-complete.html
+!/website/assets/
+/website/assets/*-backup.*

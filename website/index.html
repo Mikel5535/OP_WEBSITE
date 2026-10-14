@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Option Principal AI | A guiding light for option traders</title>
+<meta name="description" content="Systematic options trade alerts. Every setup graded by the 10-point Minerva scan, reviewed by Claude AI and confirmed by a human trader, delivered to your inbox with entry, stop, target and the reason why.">
+<meta name="theme-color" content="#1a1a1a">
+<!-- DEPLOY STEP: set og:url and og:image to the live absolute URLs -->
+<meta property="og:title" content="Option Principal AI">
+<meta property="og:description" content="A guiding light for option traders since 2002.">
+<meta property="og:url" content="https://optionprincipal.ai/">
+<meta property="og:image" content="https://optionprincipal.ai/assets/hero-ending.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%231a1a1a' stroke='%23c9a227' stroke-width='3'/%3E%3Cpath d='M27 50h10l-2-26h-6z' fill='%23f8f9fa'/%3E%3Crect x='27' y='18' width='10' height='6' fill='%23c9a227'/%3E%3Cpath d='M37 21l16-5v10z' fill='%23c9a227' opacity='.7'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=JetBrains+Mono:wght@500&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=20261007c">
+<style>
+/* Home page (Mike's ind11ex.html, Oct 7, 2026): navbar + skyline hero. Same charcoal + gold look. */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:50;background:#55595F;box-shadow:0 1px 0 rgba(0,0,0,.25),0 2px 14px rgba(0,0,0,.25)}
+.navbar.solid{background:#55595F}
+.container{width:min(1180px,calc(100% - 48px));margin-inline:auto}
+.nav-content{display:flex;align-items:center;justify-content:space-between;gap:24px;height:100px}
+.logo{display:flex;align-items:center;gap:12px;font:600 21px/1 var(--display);color:var(--text-primary);white-space:nowrap}
+.logo-icon{width:52px;height:52px;border-radius:50%;background:#fff;box-shadow:0 0 0 2px var(--accent),0 4px 14px rgba(0,0,0,.45)}
+.logo .accent{color:var(--accent);margin-left:.3em}
+.nav-links{display:flex;gap:30px;font-size:16px}
+.nav-links a{color:#f1f1f1;transition:color .3s}
+.nav-links a:hover{color:#F59E0B}
+.nav-cta .btn-link{color:var(--text-primary);font-weight:600}
+.nav-cta .btn-link:hover{color:#F59E0B}
+.btn-primary{display:inline-flex;align-items:center;padding:11px 22px;border-radius:999px;background:#F59E0B;color:#1a1a1a;font:600 15px/1 var(--body);white-space:nowrap;transition:background .35s var(--ease-out),transform .35s var(--ease-out)}
+.btn-primary:hover{background:#FBB233;transform:translateY(-2px)}
+
+.hero:not(#lighthouse){position:relative;height:auto;min-height:100vh;min-height:100svh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--canvas-deep);isolation:isolate}
+.hero-bg{position:absolute;inset:0;z-index:-1}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%;animation:skyzoom 18s var(--ease-out) both}
+.hero-overlay{position:absolute;inset:0;background:
+  linear-gradient(180deg,rgba(17,17,17,.12) 0%,rgba(17,17,17,0) 30%,rgba(17,17,17,.08) 75%,var(--canvas) 100%),
+  radial-gradient(ellipse 55% 40% at 50% 55%,rgba(17,17,17,.38) 0%,rgba(17,17,17,0) 75%)}
+.hero-grid{position:absolute;inset:0;opacity:.22;background-image:
+  linear-gradient(var(--accent-muted) 1px,transparent 1px),linear-gradient(90deg,var(--accent-muted) 1px,transparent 1px);
+  background-size:72px 72px;-webkit-mask-image:radial-gradient(ellipse 75% 65% at 50% 50%,#000 20%,transparent 80%);mask-image:radial-gradient(ellipse 75% 65% at 50% 50%,#000 20%,transparent 80%)}
+html{scroll-padding-top:112px}
+.hero-content{display:flex;flex-direction:column;align-items:center;text-align:center;padding:124px 0 48px}
+.hero-content .badge{display:inline-flex;align-items:center;gap:10px;padding:9px 18px;border:1px solid rgba(245,158,11,.55);border-radius:999px;background:rgba(17,17,17,.62);backdrop-filter:blur(8px);font:500 12px/1.3 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#F59E0B;animation:skyup .9s var(--ease-out) .2s both}
+.hero-content .badge-dot{flex:0 0 8px;height:8px;border-radius:50%;background:#F59E0B;animation:dotpulse 2.2s ease-out infinite}
+.hero-content h1{margin-top:26px;font-size:clamp(40px,calc(8vw - 6px),106px);line-height:1;letter-spacing:-.02em;max-width:12ch;text-shadow:var(--tshadow);animation:skyup 1s var(--ease-out) .35s both}
+/* Autotraders bar on the first page: same look as before, slightly shorter */
+.hero-auto{width:100%;max-width:1000px;margin-top:36px;padding:22px 32px;gap:28px;text-align:left;backdrop-filter:blur(8px);animation:skyup 1s var(--ease-out) .5s both}
+.hero-auto h3{margin-top:8px;font-size:24px}
+.hero-auto p{margin-top:6px}
+.hero-auto .auto-logos figure{width:76px;height:76px}
+.hero-auto .auto-logos figure.wide{width:220px;padding:12px 14px}
+@keyframes skyzoom{from{transform:scale(1.08)}to{transform:scale(1)}}
+@keyframes skyup{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes dotpulse{0%{box-shadow:0 0 0 0 rgba(245,158,11,.6)}80%,100%{box-shadow:0 0 0 10px rgba(245,158,11,0)}}
+@media (max-width:1060px){.nav-links{gap:20px;font-size:15px}}
+@media (max-width:900px){.nav-links{display:none}}
+@media (max-width:520px){.logo{font-size:17px;gap:9px}.logo-icon{width:40px;height:40px}.nav-cta .btn-link{display:none}.hero-content .badge{font-size:10.5px;letter-spacing:.08em;padding:8px 14px}.hero-grid{background-size:48px 48px}}
+@media (max-width:420px){.nav-content{gap:10px}.logo{font-size:15px;gap:8px}.logo-icon{width:36px;height:36px}.btn-primary{padding:8px 13px;font-size:13.5px}}
+@media (max-width:620px){.hero-auto{padding:20px;margin-top:28px}}
+
+/* Company section (from Site5 draft): dusk skyline under charcoal, gold-edged glass cards */
+.company{padding:110px 0 120px;background:
+  linear-gradient(180deg,var(--canvas) 0%,rgba(26,26,26,.82) 18%,rgba(26,26,26,.78) 82%,var(--canvas) 100%),
+  url("assets/skyline-dusk.jpg") center/cover no-repeat}
+.company-h{max-width:24ch;margin-inline:auto;text-align:center;font-size:clamp(30px,3.6vw,46px);text-shadow:var(--tshadow)}
+.company-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:56px}
+.company-card{display:flex;gap:18px;align-items:flex-start;padding:28px 26px;border:1px solid var(--line);border-radius:20px;background:rgba(26,26,26,.72);backdrop-filter:blur(8px)}
+/* Cards rise 300px from below into place, as in the Site5 draft (1.5s, after a 0.5s delay).
+   The hover lift uses `translate` so it doesn't fight the rise on `transform`. */
+.company-grid.reveal > .company-card,.company-grid.reveal.done > .company-card{opacity:0;transform:translateY(300px);transition:opacity 1.5s var(--ease-out) .5s,transform 1.5s var(--ease-out) .5s,border-color .35s var(--ease-out),translate .35s var(--ease-out)}
+.company-grid.reveal.in > .company-card{opacity:1;transform:none}
+/* Heading drops 300px from above into place, also as in the draft */
+.reveal > .company-h,.reveal.done > .company-h{opacity:0;transform:translateY(-300px);transition:opacity 1.5s var(--ease-out) .5s,transform 1.5s var(--ease-out) .5s}
+.reveal.in > .company-h{opacity:1;transform:none}
+.company-card:hover{border-color:var(--line-strong);translate:0 -3px}
+@media (prefers-reduced-motion:reduce){.company-grid.reveal > .company-card,.reveal > .company-h{opacity:1;transform:none}}
+.company-card p{color:var(--text-secondary);font-size:17px;line-height:1.6}
+.company-icon{flex:0 0 28px;width:28px;height:28px;margin-top:2px;color:var(--accent)}
+@media (max-width:760px){.company{padding:80px 0 90px}.company-grid{grid-template-columns:1fr;gap:16px;margin-top:40px}.company-card{padding:22px 20px}}
+@media (prefers-reduced-motion:reduce){.hero-bg img,.hero-content .badge,.hero-content h1,.hero-content .badge-dot,.hero-auto{animation:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="env" aria-hidden="true"></div>
+
+<!-- ======================================================================
+     START NAVIGATION BAR (fixed at top, on every screen)
+     ====================================================================== -->
+  <nav class="navbar">
+    <div class="container nav-content">
+      <a href="/" class="logo">
+        <img class="logo-icon" src="assets/op-logo-cream-crisp.png" alt="" width="52" height="52">
+        Optionprincipal<span class="accent">AI</span>
+      </a>
+      <div class="nav-links">
+        <a href="#top">Home</a>
+        <a href="#global">Services</a>
+        <a href="#ai">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="nav-cta">
+        <a href="#contact" class="btn-link">Login</a>
+        <a href="#pricing" class="btn-primary">Get Started</a>
+      </div>
+    </div>
+  </nav>
+<!-- END NAVIGATION BAR (fixed at top, on every screen) -->
+
+<main id="main" tabindex="-1">
+
+<!-- ======================================================================
+     START PAGE 1: HERO  "Master Options Trading" + Autotraders bar  (#top)
+     ====================================================================== -->
+  <section class="hero" id="top">
+    <div class="hero-bg">
+      <img src="assets/skyline-bg.jpg" alt="New York Skyline">
+      <div class="hero-overlay"></div>
+      <div class="hero-grid"></div>
+    </div>
+    <div class="container hero-content">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        v2.0 Now Live: AI-Assisted Scanning
+      </div>
+      <h1>Master Options Trading</h1>
+
+      <!-- Autotraders bar (moved up from its own section, Oct 11, 2026) -->
+      <div class="auto hero-auto" id="auto">
+        <div>
+          <span class="kicker">Works with autotraders</span>
+          <h3>Want the trades placed for you?</h3>
+          <p>Option Principal alerts run through the autotrading services we partner with, so your account can follow along automatically.</p>
+        </div>
+        <div class="auto-logos">
+          <figure><img src="assets/global-autotrading.jpg" alt="Global AutoTrading" width="96" height="96"></figure>
+          <figure class="wide"><img src="assets/autoshares-logo.png" alt="AutoShares" width="240" height="37"></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- END PAGE 1: HERO -->
+
+<!-- ======================================================================
+     START PAGE 2: COMPANY  six cards, from Site5 draft  (#company)
+     ====================================================================== -->
+<section class="s company" id="company">
+  <div class="wrap">
+    <div class="reveal">
+      <h2 class="company-h">Our Company has been investing in diversity, equity, and inclusion</h2>
+    </div>
+    <div class="company-grid reveal">
+      <div class="company-card"><svg class="company-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.6 6.9L22 9.5l-5.6 4.6L18.2 22 12 17.8 5.8 22l1.8-7.9L2 9.5l7.4-.6z" fill="currentColor"/></svg><p>Comfort produce husband boy her had hearing. Law others theirs passed but wishes. You day real less till dear read. Considered use dispatched melancholy sympathize discretion led.</p></div>
+      <div class="company-card"><svg class="company-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.6 6.9L22 9.5l-5.6 4.6L18.2 22 12 17.8 5.8 22l1.8-7.9L2 9.5l7.4-.6z" fill="currentColor"/></svg><p>Comfort produce husband boy her had hearing. Law others theirs passed but wishes. You day real less till dear read. Considered use dispatched melancholy sympathize discretion led.</p></div>
+      <div class="company-card"><svg class="company-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.6 6.9L22 9.5l-5.6 4.6L18.2 22 12 17.8 5.8 22l1.8-7.9L2 9.5l7.4-.6z" fill="currentColor"/></svg><p>Comfort produce husband boy her had hearing. Law others theirs passed but wishes. You day real less till dear read. Considered use dispatched melancholy sympathize discretion led.</p></div>
+      <div class="company-card"><svg class="company-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.6 6.9L22 9.5l-5.6 4.6L18.2 22 12 17.8 5.8 22l1.8-7.9L2 9.5l7.4-.6z" fill="currentColor"/></svg><p>Comfort produce husband boy her had hearing. Law others theirs passed but wishes. You day real less till dear read. Considered use dispatched melancholy sympathize discretion led.</p></div>
+      <div class="company-card"><svg class="company-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.6 6.9L22 9.5l-5.6 4.6L18.2 22 12 17.8 5.8 22l1.8-7.9L2 9.5l7.4-.6z" fill="currentColor"/></svg><p>Comfort produce husband boy her had hearing. Law others theirs passed but wishes. You day real less till dear read. Considered use dispatched melancholy sympathize discretion led.</p></div>
+      <div class="company-card"><svg class="company-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.6 6.9L22 9.5l-5.6 4.6L18.2 22 12 17.8 5.8 22l1.8-7.9L2 9.5l7.4-.6z" fill="currentColor"/></svg><p>Comfort produce husband boy her had hearing. Law others theirs passed but wishes. You day real less till dear read. Considered use dispatched melancholy sympathize discretion led.</p></div>
+    </div>
+  </div>
+</section>
+<!-- END PAGE 2: COMPANY -->
+
+<!-- ======================================================================
+     START PAGE 3: LIGHTHOUSE  scroll video journey  (#lighthouse)
+     ====================================================================== -->
+<section class="hero" id="lighthouse" aria-label="Introduction">
+  <div class="stage" id="stage">
+    <div class="poster" id="poster" aria-hidden="true"></div>
+    <video id="hero" preload="none" muted playsinline aria-hidden="true" tabindex="-1"></video>
+    <div class="scrim" aria-hidden="true"></div>
+
+    <div class="band b1" data-a="0" data-b="0.30">
+      <span class="kicker">Option Principal AI · Since 2002</span>
+      <p class="h split" role="heading" aria-level="2">Master options trading.</p>
+      <p>Rules first. Every trade sized, stopped and targeted before it opens.</p>
+    </div>
+    <div class="band b2" data-a="0.33" data-b="0.62">
+      <p class="h mid split" role="heading" aria-level="2">Markets get rough. Your process shouldn't.</p>
+      <p>Three scans a day. Ten tests per stock. Only A+ setups make it to your inbox.</p>
+    </div>
+    <div class="band b3" data-a="0.68" data-b="1.01" data-ramp="0.12">
+      <p class="h split" role="heading" aria-level="2">A guiding light for <span class="gold">option traders.</span></p>
+      <p>Entry, stop, target and the reason why, on every alert. Actual fills only.</p>
+      <div class="cta">
+        <a href="#pricing" class="btn btn-gold">Get the alerts</a>
+        <a href="#ai" class="btn btn-ghost">See how it works</a>
+      </div>
+    </div>
+
+    <svg class="ring" id="ring" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="20" fill="none" stroke="currentColor" stroke-opacity=".25" stroke-width="3"/><circle cx="24" cy="24" r="20" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="126" style="stroke-dashoffset:var(--ld,126);transform:rotate(-90deg);transform-origin:center"/></svg>
+    <div class="cue" id="cue" aria-hidden="true">Scroll<i></i></div>
+  </div>
+
+  <div class="static-hero">
+    <div class="wrap">
+      <span class="kicker">Option Principal AI · Since 2002</span>
+      <h2 class="static-h" style="margin-top:16px">A guiding light for <span class="gold">option traders.</span></h2>
+      <p>Systematic options alerts. Entry, stop, target and the reason why, on every trade.</p>
+      <div class="cta">
+        <a href="#pricing" class="btn btn-gold">Get the alerts</a>
+        <a href="#ai" class="btn btn-ghost">See how it works</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- END PAGE 3: LIGHTHOUSE -->
+
+<!-- ======================================================================
+     START PAGE 4: PROOF STRIP  four quick stats  (.strip)
+     ====================================================================== -->
+<div class="strip" aria-label="At a glance">
+  <ul class="wrap">
+    <li><b>10</b><span>tests every stock must pass</span></li>
+    <li><b>3×</b><span>scans a day: 10:00, 1:00, 2:30 ET</span></li>
+    <li><b>We trade it</b><span>every alert we send, in our own account</span></li>
+    <li><b>Since 2002</b><span>guiding option traders</span></li>
+  </ul>
+</div>
+<!-- END PAGE 4: PROOF STRIP -->
+
+<!-- ======================================================================
+     START PAGE 5: WHAT WE DO  spinning globe  (#global)
+     ====================================================================== -->
+<section class="s" id="global">
+  <div class="wrap globe-grid">
+    <div class="globe-box">
+      <canvas id="globe" aria-label="A spinning globe with alert routes from Palm Beach, Florida to traders around the world" role="img"></canvas>
+      <span class="globe-hint" aria-hidden="true">Drag to spin</span>
+    </div>
+    <div class="reveal">
+      <span class="kicker">What we do</span>
+      <h2 style="margin-top:18px">Wherever you trade, the signal finds you.</h2>
+      <p class="lede" style="margin-top:20px">We run the scans from North Palm Beach, Florida. The alerts reach traders across the world the moment a setup clears, and every alert and report can arrive in your own language.</p>
+      <div class="translate" aria-live="polite">
+        <span class="kicker">Your alert, your language</span>
+        <div class="tr-line" id="trLine" lang="en">Your A+ alert is ready.</div>
+        <span class="tr-lang" id="trLang">English</span>
+      </div>
+      <ul class="points">
+        <li><span><b>Real-time email alerts</b> the moment a trade opens or closes.</span></li>
+        <li><span><b>A daily market report</b> covering the macro picture, the scorecard and every open position.</span></li>
+        <li><span><b>Any language on request.</b> Claude translates each alert, figures untouched.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+<!-- END PAGE 5: WHAT WE DO -->
+
+<!-- ======================================================================
+     START PAGE 6: HOW OUR AI WORKS  (#ai)
+     ====================================================================== -->
+<section class="s" id="ai">
+  <div class="wrap">
+    <div class="ai-head reveal">
+      <div>
+        <span class="kicker">How our AI works</span>
+        <h2 style="margin-top:18px">Machines do the searching. A trader makes the call.</h2>
+      </div>
+      <p class="lede">One connected system. Claude works directly with TradingView charts and Schwab's live market data, our own scanners grade every setup, and Mike Lesko makes the final call. Then we place the trade in our own Schwab account.</p>
+    </div>
+
+    <div class="stack reveal" aria-label="Our connected stack">
+      <span class="chip-s">Claude</span><i aria-hidden="true"></i><span class="chip-s">TradingView</span><i aria-hidden="true"></i><span class="chip-s">Schwab</span>
+      <small>Fully integrated: AI, charting, market data and execution</small>
+    </div>
+
+    <div class="flow" id="flow">
+      <svg class="wires" id="wires" aria-hidden="true"></svg>
+
+      <div class="inputs">
+        <div class="node" data-n="0">
+          <span class="step">01 · DATA</span>
+          <h3>Schwab</h3>
+          <p>Live quotes, option chains and price history, straight from the broker we trade with.</p>
+        </div>
+        <div class="node" data-n="0">
+          <span class="step">01 · CHARTS</span>
+          <h3>TradingView</h3>
+          <p>Every candidate charted, with Claude reading the chart directly.</p>
+        </div>
+        <div class="node" data-n="0">
+          <span class="step">01 · MACRO</span>
+          <h3>Macro and news</h3>
+          <p>Central banks, oil, earnings dates and overnight moves.</p>
+        </div>
+      </div>
+
+      <div class="node" data-n="1">
+        <div class="icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5M8 11h6M11 8v6"/></svg></div>
+        <span class="step">02 · SCAN</span>
+        <h3>OP scanners</h3>
+        <p>Python apps built by Option Principal with Claude and Claude Code. They grade every stock on Minerva's 10 points, and a Markov model weighs the odds of its next move.</p>
+        <ul><li>10:00 AM, 1:00 PM, 2:30 PM ET</li><li>8 of 10 or better is A+</li></ul>
+      </div>
+
+      <div class="duo">
+        <div class="node" data-n="2">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/></svg></div>
+          <span class="step">03 · ANALYZE</span>
+          <h3>Claude AI</h3>
+          <p>Reviews each A+ setup, writes the macro briefing, prices the spread and flags earnings dates.</p>
+        </div>
+        <div class="node" data-n="2">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M3 17l5-6 4 3 5-8 4 5"/><path d="M3 21h18"/></svg></div>
+          <span class="step">03 · PATTERNS · COMING SOON</span>
+          <h3>Pattern agent</h3>
+          <p>In development: an AI agent built on Bulkowski's Encyclopedia of Chart Patterns that will check each chart against decades of pattern statistics.</p>
+        </div>
+      </div>
+
+      <div class="node mike" data-n="3">
+        <div class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></div>
+        <span class="step">04 · DECIDE + TRADE</span>
+        <h3>Mike Lesko</h3>
+        <p>The human final say. Picks are tagged MK, and a second analyst (JS) marks the highest conviction.</p>
+        <ul><li>We trade every alert we send, in our own Schwab account</li></ul>
+      </div>
+
+      <div class="node alert" data-n="4">
+        <div class="icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
+        <span class="step">05 · DELIVER</span>
+        <h3>Your alert</h3>
+        <p>Ticker, strikes, our actual fill price, stop, target and earnings date. Straight to your inbox.</p>
+      </div>
+    </div>
+
+    <!-- The one interactive moment: run the scan -->
+    <div class="scan" id="scan">
+      <div class="reveal">
+        <span class="kicker">Try it</span>
+        <h3 style="margin-top:14px">Run the Minerva scan.</h3>
+        <p>Press and hold. Watch a stock face the same ten tests every candidate faces before it can become an alert.</p>
+        <button class="hold" id="hold" type="button" aria-describedby="crit">
+          <svg viewBox="0 0 34 34" aria-hidden="true"><circle class="bg" cx="17" cy="17" r="14"/><circle class="fg" cx="17" cy="17" r="14"/></svg>
+          <span id="holdLabel">Hold to scan</span>
+        </button>
+      </div>
+      <ol class="crit" id="crit">
+        <li><span><b>Trend.</b> Above a rising 75-day average</span></li>
+        <li><span><b>Near high.</b> Within 5% of the 52-week high</span></li>
+        <li><span><b>Shallow pullback.</b> 8% or less from the peak</span></li>
+        <li><span><b>Quiet volume</b> on the pullback</span></li>
+        <li><span><b>Tight range.</b> Narrow days, coiling</span></li>
+        <li><span><b>No whipsaw.</b> No wild candles</span></li>
+        <li><span><b>Squeeze.</b> Bollinger Bands contracting</span></li>
+        <li><span><b>Strength.</b> Beating the S&amp;P 500 today</span></li>
+        <li><span><b>Clear skies.</b> No overhead resistance</span></li>
+        <li><span><b>Momentum.</b> RSI rising, not overbought</span></li>
+        <li class="grade" id="grade" aria-live="polite"><b id="gradeVal">?</b><span id="gradeTxt">Hold the button to grade this stock.</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+<!-- END PAGE 6: HOW OUR AI WORKS -->
+
+<!-- ======================================================================
+     START PAGE 7: RULES + SAMPLE ALERT  (#rules)
+     ====================================================================== -->
+<section class="s" id="rules">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="kicker">Every trade, same rules</span>
+      <h2 style="margin-top:18px">One strategy, done with discipline.</h2>
+      <p class="lede" style="margin-top:20px">No guessing, no chasing, no holding through earnings on a whim. You know the exit before the entry.</p>
+    </div>
+    <div class="rules-grid">
+      <dl class="rule-list reveal">
+        <div class="rule"><dt>Structure</dt><dd><b>Bull call and bear put debit spreads</b>Bull calls when the trend is up, bear puts when it breaks down. Either way, your risk is capped at the debit you pay.</dd></div>
+        <div class="rule"><dt>Stop</dt><dd><b>About half the debit</b>Set as a standing order the day the trade opens.</dd></div>
+        <div class="rule"><dt>Target</dt><dd><b>The short strike</b>Where the spread reaches its full value.</dd></div>
+        <div class="rule"><dt>Earnings</dt><dd><b>Out before the report</b>Every alert shows the earnings date, and we close the day before.</dd></div>
+        <div class="rule"><dt>Hedges</dt><dd><b>Balance the book</b>Bear put spreads on weak sectors and indexes, often at half size, to protect the book in a falling market.</dd></div>
+      </dl>
+      <div class="reveal inbox">
+        <span class="kicker">What lands in your inbox</span>
+        <div class="tabs" role="tablist" aria-label="Example emails">
+          <button role="tab" id="t-open" aria-controls="m-open" aria-selected="true">Opening alert</button>
+          <button role="tab" id="t-close" aria-controls="m-close" aria-selected="false" tabindex="-1">Closing alert</button>
+          <button role="tab" id="t-daily" aria-controls="m-daily" aria-selected="false" tabindex="-1">Daily update</button>
+        </div>
+        <div class="mails">
+          <div class="mail" id="m-open" role="tabpanel" aria-labelledby="t-open">
+            <div class="mast"><b>OPTION PRINCIPAL AI</b><small>OPENING ALERT</small></div>
+            <div class="hd">BUY $XYZ Bull Call Spread</div>
+            <table>
+              <tr><td>Structure</td><td>Buy 100C / Sell 110C</td></tr>
+              <tr><td>Expiry</td><td>Nov 20</td></tr>
+              <tr><td>Net debit (actual fill)</td><td>$3.90</td></tr>
+              <tr><td>Stop</td><td>$1.95 GTC</td></tr>
+              <tr><td>Target</td><td>$10.00 (short strike)</td></tr>
+              <tr><td>Breakeven</td><td>$103.90</td></tr>
+              <tr><td>Earnings</td><td>Dec 3 · exit before</td></tr>
+            </table>
+            <div class="recap"><b>Why this trade:</b> Minerva 9/10, A+. Tagged MK + JS. Tight range under the 52-week high with volume drying up.</div>
+            <div class="foot">Option Principal AI · North Palm Beach, FL</div>
+          </div>
+          <div class="mail" id="m-close" role="tabpanel" aria-labelledby="t-close" hidden>
+            <div class="mast"><b>OPTION PRINCIPAL AI</b><small>CLOSING ALERT</small></div>
+            <div class="hd red">CLOSING $XYZ Vertical Debit Spread</div>
+            <table>
+              <tr><td>Sell to close</td><td>Nov 20 $100 Call</td></tr>
+              <tr><td>Buy to close</td><td>Nov 20 $110 Call</td></tr>
+              <tr><td>Net credit (actual fill)</td><td>$7.80</td></tr>
+              <tr><td>Entry debit</td><td>$3.90</td></tr>
+              <tr><td>P/L</td><td>+$3.90 per spread · +100%</td></tr>
+              <tr><td>Result</td><td>WINNER</td></tr>
+              <tr><td>Hold period</td><td>18 days</td></tr>
+            </table>
+            <div class="recap"><b>Close rationale:</b> Price reached the short strike area two weeks before earnings. Target met, profit taken.</div>
+            <div class="foot">Option Principal AI · North Palm Beach, FL</div>
+          </div>
+          <div class="mail" id="m-daily" role="tabpanel" aria-labelledby="t-daily" hidden>
+            <div class="mast"><b>OPTION PRINCIPAL AI</b><small>DAILY MARKET UPDATE</small></div>
+            <div class="hd">Good morning, Option Principal subscribers.</div>
+            <table class="snap">
+              <tr><td>S&amp;P 500 (SPY)</td><td>+0.4%</td><td>BULL</td></tr>
+              <tr><td>NASDAQ (QQQ)</td><td>+0.6%</td><td>BULL</td></tr>
+              <tr><td>VIX</td><td>-0.8</td><td>LOW</td></tr>
+              <tr><td>WTI Crude</td><td>-1.2%</td><td>FALLING</td></tr>
+              <tr><td>10-Yr Treasury</td><td>+3 bps</td><td>RISING</td></tr>
+            </table>
+            <div class="recap"><b>Impact on our book:</b> Tech strength lifts two open spreads toward target. One energy position sits near its stop and is on watch.</div>
+            <div class="foot">Option Principal AI · North Palm Beach, FL</div>
+          </div>
+        </div>
+        <p class="sample-note">EXAMPLES ONLY · NOT REAL TRADES</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- END PAGE 7: RULES + SAMPLE ALERT -->
+
+<!-- ======================================================================
+     START PAGE 8: TRACK RECORD  (#track)
+     ====================================================================== -->
+<style>
+/* Track record (from track-record.html), scoped to #track */
+#track{--gold:#C9A227; --ink:#E8E9FA; --bg:#1D1C19; --card:#24231F; --line:rgba(201,162,39,.30); --muted:rgba(232,233,250,.62); --pos:#5FBF77; --neg:#E5635A;}
+#track .eyebrow{font-family:ui-monospace,"SFMono-Regular",Consolas,monospace; color:var(--gold); font-size:13px; letter-spacing:4px; font-weight:700; text-transform:uppercase;}
+#track h2{font-family:"Fraunces",Georgia,"Times New Roman",serif; font-size:44px; line-height:1.08; margin:10px 0 8px; font-weight:700;}
+#track .lede{color:var(--muted); font-size:17px; margin:0 0 28px; max-width:720px; line-height:1.55;}
+#track .groups{display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-bottom:28px;}
+#track .group-head{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:12px;}
+#track .group-head .sub{color:var(--muted); font-size:13px;}
+#track .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px;}
+#track .stat{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 16px 14px;}
+#track .stat .val{font-family:"Fraunces",Georgia,serif; font-size:30px; font-weight:700; color:var(--gold); line-height:1.1;}
+#track .stat .val.pos{color:var(--pos);}
+#track .stat .val.neg{color:var(--neg);}
+#track .stat .lbl{color:var(--muted); font-size:13px; margin-top:6px;}
+#track .log{background:var(--card); border:1px solid var(--line); border-radius:14px; overflow:hidden;}
+#track .log-head{display:flex; justify-content:space-between; align-items:baseline; padding:14px 18px; border-bottom:1px solid var(--line);}
+#track .log-head .sub{color:var(--muted); font-size:13px;}
+#track .scroll{max-height:340px; overflow:auto;}
+#track table{width:100%; border-collapse:collapse; font-size:13px; min-width:900px;}
+#track th{position:sticky; top:0; background:#2B2A25; color:var(--gold); text-align:left; font-weight:600; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; padding:9px 10px;}
+#track td{padding:8px 10px; border-top:1px solid rgba(232,233,250,.07); white-space:nowrap;}
+#track td.note-c{white-space:normal; color:var(--muted); min-width:240px;}
+#track tbody tr:hover td{background:rgba(201,162,39,.06);}
+#track .r{text-align:right;}
+#track .num{color:var(--muted);}
+#track .tk{font-weight:700;}
+#track .win{color:var(--pos); font-weight:700;}
+#track .loss{color:var(--neg); font-weight:700;}
+#track .half{color:var(--gold); font-size:11px; font-weight:700; letter-spacing:1px;}
+#track .fine{color:var(--muted); font-size:12px; line-height:1.55; margin-top:16px;}
+@media (max-width:900px){#track .groups{grid-template-columns:1fr;}#track h2{font-size:34px;}}
+@media (max-width:520px){#track .grid{grid-template-columns:repeat(2,1fr);}#track .stat .val{font-size:24px;}}
+#track .tr-wrap h2{margin-top:10px}
+</style>
+<section class="s" id="track">
+  <div class="wrap tr-wrap">
+ <div class="eyebrow">Our Track Record</div>
+ <h2>Every trade on the record.</h2>
+ <p class="lede">Results from the Principal&rsquo;s actual fills, never estimates &mdash; one contract per trade, before commissions and fees. Updated October 13, 2026.</p>
+
+ <div class="groups">
+  <section>
+   <div class="group-head"><div class="eyebrow">Since Inception</div><div class="sub">93 closed trades</div></div>
+   <div class="grid"><div class="stat"><div class="val ">93</div><div class="lbl">Closed trades</div></div><div class="stat"><div class="val ">42%</div><div class="lbl">Win rate · 39W / 54L</div></div><div class="stat"><div class="val pos">+46.7%</div><div class="lbl">Avg winning trade</div></div><div class="stat"><div class="val neg">&minus;34.1%</div><div class="lbl">Avg losing trade</div></div><div class="stat"><div class="val pos">+$591</div><div class="lbl">Net P/L · 1 contract</div></div><div class="stat"><div class="val ">1.10</div><div class="lbl">Profit factor</div></div></div>
+  </section>
+  <section>
+   <div class="group-head"><div class="eyebrow">October 2026 &middot; Month to Date</div><div class="sub">22 closed trades</div></div>
+   <div class="grid"><div class="stat"><div class="val ">22</div><div class="lbl">Closed trades</div></div><div class="stat"><div class="val ">50%</div><div class="lbl">Win rate · 11W / 11L</div></div><div class="stat"><div class="val pos">+40.7%</div><div class="lbl">Avg winning trade</div></div><div class="stat"><div class="val neg">&minus;30.5%</div><div class="lbl">Avg losing trade</div></div><div class="stat"><div class="val pos">+$738</div><div class="lbl">Net P/L · 1 contract</div></div><div class="stat"><div class="val ">1.70</div><div class="lbl">Profit factor</div></div></div>
+  </section>
+ </div>
+
+ <div class="log">
+  <div class="log-head"><div class="eyebrow">Complete Trade Log</div><div class="sub">Newest first &middot; scroll for full history</div></div>
+  <div class="scroll">
+   <table>
+    <thead><tr><th>#</th><th>Ticker</th><th>Strikes / Expiry</th><th>Opened</th><th>Closed</th><th class="r">Days</th><th class="r">Entry</th><th class="r">Exit</th><th class="r">P/L $</th><th class="r">P/L %</th><th>Size</th><th>Exit Reason</th></tr></thead>
+    <tbody>
+<tr><td class="num">94</td><td class="tk">NOW-1</td><td>OCT23 $142/$147</td><td>10/12</td><td>10/13</td><td class="r">1</td><td class="r">$2.080</td><td class="r">$1.575</td><td class="r loss">-$0.505</td><td class="r loss">-24.3%</td><td>FULL</td><td class="note-c">Discretionary below $139.43 hard-exit level after &minus;20% flag</td></tr>
+<tr><td class="num">93</td><td class="tk">COP-1</td><td>OCT23 $135/$140</td><td>10/12</td><td>10/13</td><td class="r">1</td><td class="r">$2.700</td><td class="r">$3.090</td><td class="r win">+$0.390</td><td class="r win">+14.4%</td><td><span class="half">HALF</span></td><td class="note-c">Take-profit through $140 short strike; energy short-leash rule ahead of CPI</td></tr>
+<tr><td class="num">92</td><td class="tk">HUM-1</td><td>OCT23 $435/$445</td><td>10/12</td><td>10/13</td><td class="r">1</td><td class="r">$3.450</td><td class="r">$2.550</td><td class="r loss">-$0.900</td><td class="r loss">-26.1%</td><td><span class="half">HALF</span></td><td class="note-c">Discretionary below $419.41 hard-exit level after &minus;20% flag; managed-care selloff</td></tr>
+<tr><td class="num">91</td><td class="tk">PANW-2</td><td>OCT23 $410/$420</td><td>10/9</td><td>10/12</td><td class="r">3</td><td class="r">$4.580</td><td class="r">$4.075</td><td class="r loss">-$0.505</td><td class="r loss">-11.0%</td><td>FULL</td><td class="note-c">Discretionary exit after &minus;20% mark flag; Phillip Securities downgrade, cyber profit-taking</td></tr>
+<tr><td class="num">90</td><td class="tk">XOM-2</td><td>OCT23 $167.50/$172.50</td><td>10/8</td><td>10/12</td><td class="r">4</td><td class="r">$2.025</td><td class="r">$3.200</td><td class="r win">+$1.175</td><td class="r win">+58.0%</td><td>FULL</td><td class="note-c">Take-profit at $172.50 short strike; energy short-leash rule</td></tr>
+<tr><td class="num">89</td><td class="tk">GNRC-1</td><td>OCT23 $225/$235</td><td>10/8</td><td>10/9</td><td class="r">1</td><td class="r">$3.850</td><td class="r">$3.800</td><td class="r loss">-$0.050</td><td class="r loss">-1.3%</td><td>FULL</td><td class="note-c">Discretionary exit before Hurricane Isaias landfall; no traction</td></tr>
+<tr><td class="num">88</td><td class="tk">MUU-4</td><td>OCT16 $37/$40</td><td>10/7</td><td>10/8</td><td class="r">1</td><td class="r">$1.175</td><td class="r">$0.549</td><td class="r loss">-$0.626</td><td class="r loss">-53.3%</td><td><span class="half">HALF</span></td><td class="note-c">GTC stop hit 11:38 AM</td></tr>
+<tr><td class="num">87</td><td class="tk">MSFT-1</td><td>OCT16 $530/$540</td><td>10/7</td><td>10/8</td><td class="r">1</td><td class="r">$4.175</td><td class="r">$2.840</td><td class="r loss">-$1.335</td><td class="r loss">-32.0%</td><td>FULL</td><td class="note-c">TSM Protocol Time-Out; OpenAI revenue report</td></tr>
+<tr><td class="num">86</td><td class="tk">RCL-1</td><td>OCT16 $285/$295</td><td>10/6</td><td>10/8</td><td class="r">2</td><td class="r">$4.350</td><td class="r">$2.770</td><td class="r loss">-$1.580</td><td class="r loss">-36.3%</td><td>FULL</td><td class="note-c">TSM Protocol Time-Out; crude rebound, below $285 long strike</td></tr>
+<tr><td class="num">85</td><td class="tk">PLTR-2</td><td>OCT16 $185/$195</td><td>10/5</td><td>10/8</td><td class="r">3</td><td class="r">$4.650</td><td class="r">$6.300</td><td class="r win">+$1.650</td><td class="r win">+35.5%</td><td>FULL</td><td class="note-c">Take-profit through $195 short strike</td></tr>
+<tr><td class="num">84</td><td class="tk">APH-2</td><td>OCT16 $87.50/$92.50</td><td>10/6</td><td>10/8</td><td class="r">2</td><td class="r">$2.225</td><td class="r">$1.325</td><td class="r loss">-$0.900</td><td class="r loss">-40.4%</td><td>FULL</td><td class="note-c">TSM Protocol Time-Out ahead of $1.11 GTC stop</td></tr>
+<tr><td class="num">83</td><td class="tk">AMDL-2</td><td>OCT16 $85/$95</td><td>10/6</td><td>10/7</td><td class="r">1</td><td class="r">$4.800</td><td class="r">$3.750</td><td class="r loss">-$1.050</td><td class="r loss">-21.9%</td><td><span class="half">HALF</span></td><td class="note-c">Discretionary exit after &minus;20% flag</td></tr>
+<tr><td class="num">82</td><td class="tk">CRWD-2</td><td>OCT16 $275/$285</td><td>10/6</td><td>10/7</td><td class="r">1</td><td class="r">$4.700</td><td class="r">$2.830</td><td class="r loss">-$1.870</td><td class="r loss">-39.8%</td><td>FULL</td><td class="note-c">TSM Protocol Time-Out ahead of $2.35 GTC stop</td></tr>
+<tr><td class="num">81</td><td class="tk">ANET-1</td><td>OCT16 $205/$215</td><td>10/2</td><td>10/6</td><td class="r">4</td><td class="r">$3.125</td><td class="r">$5.600</td><td class="r win">+$2.475</td><td class="r win">+79.2%</td><td>FULL</td><td class="note-c">Take-profit into $215 short strike / 52-wk high</td></tr>
+<tr><td class="num">80</td><td class="tk">PANW-1</td><td>OCT16 $400/$410</td><td>9/30</td><td>10/6</td><td class="r">6</td><td class="r">$4.450</td><td class="r">$6.800</td><td class="r win">+$2.350</td><td class="r win">+52.8%</td><td>FULL</td><td class="note-c">Take-profit; gap to 52-wk high through $410 short strike</td></tr>
+<tr><td class="num">79</td><td class="tk">NET-1</td><td>OCT16 $350/$360</td><td>10/2</td><td>10/5</td><td class="r">3</td><td class="r">$4.550</td><td class="r">$6.220</td><td class="r win">+$1.670</td><td class="r win">+36.7%</td><td>FULL</td><td class="note-c">Take-profit through $360 short strike</td></tr>
+<tr><td class="num">78</td><td class="tk">META-1</td><td>OCT16 $735/$745</td><td>9/29</td><td>10/5</td><td class="r">6</td><td class="r">$4.400</td><td class="r">$5.520</td><td class="r win">+$1.120</td><td class="r win">+25.5%</td><td>FULL</td><td class="note-c">Take-profit at $745 short strike</td></tr>
+<tr><td class="num">77</td><td class="tk">NBIS-1</td><td>OCT16 $237.50/$247.50</td><td>9/29</td><td>10/2</td><td class="r">3</td><td class="r">$4.050</td><td class="r">$5.370</td><td class="r win">+$1.320</td><td class="r win">+32.6%</td><td>FULL</td><td class="note-c">Take-profit ahead of MU earnings</td></tr>
+<tr><td class="num">76</td><td class="tk">PLTR-1</td><td>OCT16 $185/$192.50</td><td>9/30</td><td>10/2</td><td class="r">2</td><td class="r">$3.475</td><td class="r">$4.470</td><td class="r win">+$0.995</td><td class="r win">+28.6%</td><td>FULL</td><td class="note-c">Take-profit ahead of MU earnings</td></tr>
+<tr><td class="num">75</td><td class="tk">CRWD-1</td><td>OCT16 $260/$270</td><td>9/28</td><td>10/2</td><td class="r">4</td><td class="r">$4.150</td><td class="r">$6.025</td><td class="r win">+$1.875</td><td class="r win">+45.2%</td><td>FULL</td><td class="note-c">Take-profit ahead of MU earnings</td></tr>
+<tr><td class="num">74</td><td class="tk">ETN-1</td><td>OCT16 $430/$450</td><td>10/1</td><td>10/2</td><td class="r">1</td><td class="r">$7.500</td><td class="r">$10.400</td><td class="r win">+$2.900</td><td class="r win">+38.7%</td><td>FULL</td><td class="note-c">Take-profit; NFP rally</td></tr>
+<tr><td class="num">73</td><td class="tk">MRK</td><td>OCT16 $150/$160</td><td>9/24</td><td>10/1</td><td class="r">7</td><td class="r">$2.480</td><td class="r">$1.265</td><td class="r loss">-$1.215</td><td class="r loss">-49.0%</td><td>FULL</td><td class="note-c">GTC stop &mdash; never cleared $150 long strike</td></tr>
+<tr><td class="num">72</td><td class="tk">AAPL-1</td><td>OCT16 $340/$350</td><td>9/28</td><td>9/29</td><td class="r">1</td><td class="r">$3.720</td><td class="r">$2.150</td><td class="r loss">-$1.570</td><td class="r loss">-42.2%</td><td>FULL</td><td class="note-c">TSM Protocol &mdash; macro rout / iPhone Asia demand</td></tr>
+<tr><td class="num">71</td><td class="tk">ALAB</td><td>OCT16 $362.50/$372.50</td><td>9/23</td><td>9/28</td><td class="r">5</td><td class="r">$4.115</td><td class="r">$3.300</td><td class="r loss">-$0.815</td><td class="r loss">-19.8%</td><td><span class="half">HALF</span></td><td class="note-c">Discretionary exit; Minerva degraded, spot below long strike</td></tr>
+<tr><td class="num">70</td><td class="tk">FBL-2</td><td>OCT16 $34/$41</td><td>9/23</td><td>9/28</td><td class="r">5</td><td class="r">$2.000</td><td class="r">$0.950</td><td class="r loss">-$1.050</td><td class="r loss">-52.5%</td><td>FULL</td><td class="note-c">GTC stop hit at open; macro rout</td></tr>
+<tr><td class="num">69</td><td class="tk">MUU-3</td><td>OCT16 $34/$40</td><td>9/17</td><td>9/22</td><td class="r">5</td><td class="r">$2.120</td><td class="r">$2.800</td><td class="r win">+$0.680</td><td class="r win">+32.1%</td><td>FULL</td><td class="note-c">Take-profit; Minerva degraded</td></tr>
+<tr><td class="num">68</td><td class="tk">SPY</td><td>OCT16 $760/$770</td><td>9/15</td><td>9/21</td><td class="r">6</td><td class="r">$5.615</td><td class="r">$7.260</td><td class="r win">+$1.645</td><td class="r win">+29.3%</td><td>FULL</td><td class="note-c">Partial profit</td></tr>
+<tr><td class="num">67</td><td class="tk">AMDL</td><td>OCT16 $60/$70</td><td>9/14</td><td>9/21</td><td class="r">7</td><td class="r">$4.350</td><td class="r">$7.250</td><td class="r win">+$2.900</td><td class="r win">+66.7%</td><td>FULL</td><td class="note-c">Take-profit; near max gain</td></tr>
+<tr><td class="num">66</td><td class="tk">PANW</td><td>OCT16 $370/$380</td><td>9/14</td><td>9/21</td><td class="r">7</td><td class="r">$5.120</td><td class="r">$4.690</td><td class="r loss">-$0.430</td><td class="r loss">-8.4%</td><td>FULL</td><td class="note-c">Capital rotation</td></tr>
+<tr><td class="num">65</td><td class="tk">OXY-3</td><td>OCT16 $60/$65</td><td>9/14</td><td>9/21</td><td class="r">7</td><td class="r">$1.820</td><td class="r">$0.730</td><td class="r loss">-$1.090</td><td class="r loss">-59.9%</td><td>FULL</td><td class="note-c">GTC stop hit</td></tr>
+<tr><td class="num">64</td><td class="tk">INTC</td><td>OCT16 $95/$105</td><td>9/10</td><td>9/17</td><td class="r">7</td><td class="r">$4.220</td><td class="r">$6.530</td><td class="r win">+$2.310</td><td class="r win">+54.7%</td><td>FULL</td><td class="note-c">Take-profit; analyst upgrades</td></tr>
+<tr><td class="num">63</td><td class="tk">DLLL</td><td>OCT16 $31/$37</td><td>9/10</td><td>9/16</td><td class="r">6</td><td class="r">$2.100</td><td class="r">$3.000</td><td class="r win">+$0.900</td><td class="r win">+42.9%</td><td>FULL</td><td class="note-c">Take-profit; near short strike</td></tr>
+<tr><td class="num">62</td><td class="tk">FBL</td><td>OCT16 $25/$29</td><td>9/10</td><td>9/16</td><td class="r">6</td><td class="r">$1.860</td><td class="r">$2.250</td><td class="r win">+$0.390</td><td class="r win">+21.0%</td><td>FULL</td><td class="note-c">Take-profit; overbought RSI</td></tr>
+<tr><td class="num">61</td><td class="tk">BE</td><td>OCT16 $260/$270</td><td>9/10</td><td>9/16</td><td class="r">6</td><td class="r">$3.620</td><td class="r">$5.050</td><td class="r win">+$1.430</td><td class="r win">+39.5%</td><td>FULL</td><td class="note-c">Take-profit ahead of FOMC</td></tr>
+<tr><td class="num">60</td><td class="tk">FANG-2</td><td>OCT16 $200/$210</td><td>9/8</td><td>9/15</td><td class="r">7</td><td class="r">$4.200</td><td class="r">$6.000</td><td class="r win">+$1.800</td><td class="r win">+42.9%</td><td>FULL</td><td class="note-c">Disciplinary exit</td></tr>
+<tr><td class="num">59</td><td class="tk">SNDG</td><td>OCT16 $10/$14</td><td>9/8</td><td>9/14</td><td class="r">6</td><td class="r">$0.990</td><td class="r">$0.470</td><td class="r loss">-$0.520</td><td class="r loss">-52.5%</td><td>FULL</td><td class="note-c">GTC stop hit</td></tr>
+<tr><td class="num">58</td><td class="tk">MUU-2</td><td>OCT16 $33/$39</td><td>9/8</td><td>9/14</td><td class="r">6</td><td class="r">$1.920</td><td class="r">$0.630</td><td class="r loss">-$1.290</td><td class="r loss">-67.2%</td><td>FULL</td><td class="note-c">GTC stop hit</td></tr>
+<tr><td class="num">57</td><td class="tk">AMZN-2</td><td>OCT16 $255/$265</td><td>9/4</td><td>9/10</td><td class="r">6</td><td class="r">$4.825</td><td class="r">$3.730</td><td class="r loss">-$1.095</td><td class="r loss">-22.7%</td><td>FULL</td><td class="note-c">Discretionary exit; -20% flag</td></tr>
+<tr><td class="num">56</td><td class="tk">DE</td><td>SEP18 $685/$695</td><td>9/2</td><td>9/9</td><td class="r">7</td><td class="r">$4.930</td><td class="r">$3.050</td><td class="r loss">-$1.880</td><td class="r loss">-38.1%</td><td>FULL</td><td class="note-c">Oil/macro selloff; spot well below $685</td></tr>
+<tr><td class="num">55</td><td class="tk">CART</td><td>OCT16 $50/$55</td><td>9/4</td><td>9/8</td><td class="r">4</td><td class="r">$2.050</td><td class="r">$1.300</td><td class="r loss">-$0.750</td><td class="r loss">-36.6%</td><td>FULL</td><td class="note-c">TSM Protocol; second attempt</td></tr>
+<tr><td class="num">54</td><td class="tk">JPM</td><td>SEP18 $360/$370</td><td>9/2</td><td>9/4</td><td class="r">2</td><td class="r">$5.220</td><td class="r">$3.215</td><td class="r loss">-$2.005</td><td class="r loss">-38.4%</td><td>FULL</td><td class="note-c">Time-Out protocol; spot below strike</td></tr>
+<tr><td class="num">53</td><td class="tk">XOM</td><td>SEP18 $165/$170</td><td>9/2</td><td>9/4</td><td class="r">2</td><td class="r">$1.730</td><td class="r">$0.890</td><td class="r loss">-$0.840</td><td class="r loss">-48.6%</td><td>FULL</td><td class="note-c">Near-GTC stop; crude selloff</td></tr>
+<tr><td class="num">52</td><td class="tk">BIIB</td><td>SEP18 $215.5/$225</td><td>8/24</td><td>9/3</td><td class="r">10</td><td class="r">$4.800</td><td class="r">$6.700</td><td class="r win">+$1.900</td><td class="r win">+39.6%</td><td>FULL</td><td class="note-c">Target-area profit-take</td></tr>
+<tr><td class="num">51</td><td class="tk">TSM</td><td>SEP18 $420/$450</td><td>8/27</td><td>9/2</td><td class="r">6</td><td class="r">$12.450</td><td class="r">$6.130</td><td class="r loss">-$6.320</td><td class="r loss">-50.8%</td><td>FULL</td><td class="note-c">GTC stop triggered by ToS; spot $414</td></tr>
+<tr><td class="num">50</td><td class="tk">FTNT</td><td>OCT16 $165/$175</td><td>8/27</td><td>9/2</td><td class="r">6</td><td class="r">$4.400</td><td class="r">$2.600</td><td class="r loss">-$1.800</td><td class="r loss">-40.9%</td><td>FULL</td><td class="note-c">-20% flag; PANW -10.4% sector collapse</td></tr>
+<tr><td class="num">49</td><td class="tk">CRCL</td><td>SEP18 $93/$97</td><td>8/31</td><td>9/1</td><td class="r">1</td><td class="r">$2.000</td><td class="r">$1.300</td><td class="r loss">-$0.700</td><td class="r loss">-35.0%</td><td>FULL</td><td class="note-c">Flag-threshold exit</td></tr>
+<tr><td class="num">48</td><td class="tk">LNG</td><td>SEP18 $285/$292.5</td><td>8/31</td><td>9/1</td><td class="r">1</td><td class="r">$3.700</td><td class="r">$4.550</td><td class="r win">+$0.850</td><td class="r win">+23.0%</td><td>FULL</td><td class="note-c">Target-hit; spot above $292.50</td></tr>
+<tr><td class="num">47</td><td class="tk">CVX</td><td>SEP18 $200/$210</td><td>8/17</td><td>9/1</td><td class="r">15</td><td class="r">$3.900</td><td class="r">$6.450</td><td class="r win">+$2.550</td><td class="r win">+65.4%</td><td>FULL</td><td class="note-c">Discretionary profit-take</td></tr>
+<tr><td class="num">46</td><td class="tk">AAPL</td><td>SEP18 $320/$325</td><td>8/28</td><td>8/31</td><td class="r">3</td><td class="r">$2.500</td><td class="r">$1.875</td><td class="r loss">-$0.625</td><td class="r loss">-25.0%</td><td>FULL</td><td class="note-c">-20% flag; weekend gap below $320</td></tr>
+<tr><td class="num">45</td><td class="tk">PRGS</td><td>SEP18 $42.5/$47.5</td><td>8/12</td><td>8/28</td><td class="r">16</td><td class="r">$1.875</td><td class="r">$2.900</td><td class="r win">+$1.025</td><td class="r win">+54.7%</td><td>FULL</td><td class="note-c">Discretionary profit-take</td></tr>
+<tr><td class="num">44</td><td class="tk">LYV</td><td>OCT16 $185/$195</td><td>8/25</td><td>8/28</td><td class="r">3</td><td class="r">$3.950</td><td class="r">$2.350</td><td class="r loss">-$1.600</td><td class="r loss">-40.5%</td><td>FULL</td><td class="note-c">-20% flag; Warsh Jackson Hole</td></tr>
+<tr><td class="num">43</td><td class="tk">CART</td><td>OCT16 $50/$55</td><td>8/25</td><td>8/27</td><td class="r">2</td><td class="r">$2.275</td><td class="r">$1.725</td><td class="r loss">-$0.550</td><td class="r loss">-24.2%</td><td>FULL</td><td class="note-c">-20% flag exit</td></tr>
+<tr><td class="num">42</td><td class="tk">SILJ</td><td>SEP18 $28/$33</td><td>8/17</td><td>8/25</td><td class="r">8</td><td class="r">$2.090</td><td class="r">$3.380</td><td class="r win">+$1.290</td><td class="r win">+61.7%</td><td>FULL</td><td class="note-c">Target-hit; silver complex strength</td></tr>
+<tr><td class="num">41</td><td class="tk">DVN</td><td>SEP25 $50/$55</td><td>8/20</td><td>8/25</td><td class="r">5</td><td class="r">$1.235</td><td class="r">$0.605</td><td class="r loss">-$0.630</td><td class="r loss">-51.0%</td><td>FULL</td><td class="note-c">GTC stop triggered</td></tr>
+<tr><td class="num">40</td><td class="tk">AIQ</td><td>SEP18 $63/$67</td><td>8/21</td><td>8/24</td><td class="r">3</td><td class="r">$1.675</td><td class="r">&mdash;</td><td class="r">&mdash;</td><td class="r">PENDING</td><td>FULL</td><td class="note-c">Fills not confirmed</td></tr>
+<tr><td class="num">39</td><td class="tk">NVDA</td><td>SEP18 $215/$225</td><td>8/21</td><td>8/24</td><td class="r">3</td><td class="r">$4.250</td><td class="r">$3.235</td><td class="r loss">-$1.015</td><td class="r loss">-23.9%</td><td>FULL</td><td class="note-c">-20% flag; ahead of 8/26 earnings</td></tr>
+<tr><td class="num">38</td><td class="tk">MRVL</td><td>SEP18 $260/$270</td><td>8/20</td><td>8/21</td><td class="r">1</td><td class="r">$3.175</td><td class="r">$2.550</td><td class="r loss">-$0.625</td><td class="r loss">-19.7%</td><td>FULL</td><td class="note-c">Ahead of earnings &mdash; sector weakness</td></tr>
+<tr><td class="num">37</td><td class="tk">GD</td><td>SEP18 $400/$410</td><td>8/19</td><td>8/21</td><td class="r">2</td><td class="r">$3.775</td><td class="r">$2.000</td><td class="r loss">-$1.775</td><td class="r loss">-47.0%</td><td><span class="half">HALF</span></td><td class="note-c">50% GTC stop line</td></tr>
+<tr><td class="num">36</td><td class="tk">CSX</td><td>SEP18 $50/$52.5</td><td>8/18</td><td>8/20</td><td class="r">2</td><td class="r">$0.825</td><td class="r">$1.275</td><td class="r win">+$0.450</td><td class="r win">+54.5%</td><td>FULL</td><td class="note-c">Target-area hit</td></tr>
+<tr><td class="num">35</td><td class="tk">TSLA</td><td>SEP18 $335P/$320P</td><td>8/14</td><td>8/20</td><td class="r">6</td><td class="r">$5.675</td><td class="r">$5.325</td><td class="r loss">-$0.350</td><td class="r loss">-6.2%</td><td>FULL</td><td class="note-c">Thesis invalidated &mdash; Cybercab catalyst</td></tr>
+<tr><td class="num">34</td><td class="tk">NVDA</td><td>SEP18 $230/$245</td><td>8/12</td><td>8/18</td><td class="r">6</td><td class="r">$4.575</td><td class="r">$3.435</td><td class="r loss">-$1.140</td><td class="r loss">-24.9%</td><td>FULL</td><td class="note-c">-20% flag exit</td></tr>
+<tr><td class="num">33</td><td class="tk">ITA</td><td>SEP18 $255/$265</td><td>8/14</td><td>8/19</td><td class="r">5</td><td class="r">$3.150</td><td class="r">$2.100</td><td class="r loss">-$1.050</td><td class="r loss">-33.3%</td><td>FULL</td><td class="note-c">-20% flag exit</td></tr>
+<tr><td class="num">32</td><td class="tk">JPM</td><td>AUG21 $362.5/$367.5</td><td>8/13</td><td>8/17</td><td class="r">4</td><td class="r">$2.180</td><td class="r">$1.795</td><td class="r loss">-$0.385</td><td class="r loss">-17.7%</td><td>FULL</td><td class="note-c">-20% flag exit</td></tr>
+<tr><td class="num">31</td><td class="tk">MUU</td><td>AUG21 $32/$35</td><td>8/13</td><td>8/17</td><td class="r">4</td><td class="r">$0.950</td><td class="r">$2.050</td><td class="r win">+$1.100</td><td class="r win">+115.8%</td><td>FULL</td><td class="note-c">Max gain / target</td></tr>
+<tr><td class="num">30</td><td class="tk">OXY</td><td>AUG21 $58/$61</td><td>8/10</td><td>8/17</td><td class="r">7</td><td class="r">$1.150</td><td class="r">$0.911</td><td class="r loss">-$0.240</td><td class="r loss">-20.8%</td><td>FULL</td><td class="note-c">-20% flag exit</td></tr>
+<tr><td class="num">29</td><td class="tk">SCHW</td><td>AUG21 $105/$110</td><td>8/4</td><td>8/14</td><td class="r">10</td><td class="r">$2.095</td><td class="r">$3.980</td><td class="r win">+$1.885</td><td class="r win">+90.0%</td><td>FULL</td><td class="note-c">Target hit</td></tr>
+<tr><td class="num">28</td><td class="tk">APH</td><td>AUG21 $170/$180</td><td>8/10</td><td>8/14</td><td class="r">4</td><td class="r">$3.425</td><td class="r">$2.225</td><td class="r loss">-$1.200</td><td class="r loss">-35.0%</td><td>FULL</td><td class="note-c">-20% flag exit</td></tr>
+<tr><td class="num">27</td><td class="tk">SQQQ</td><td>AUG21 $38/$42</td><td>8/11</td><td>8/13</td><td class="r">2</td><td class="r">$0.975</td><td class="r">$0.451</td><td class="r loss">-$0.524</td><td class="r loss">-53.7%</td><td><span class="half">HALF</span></td><td class="note-c">GTC stop</td></tr>
+<tr><td class="num">26</td><td class="tk">GD</td><td>AUG21 $397.5/$410</td><td>8/11</td><td>8/13</td><td class="r">2</td><td class="r">$2.450</td><td class="r">$1.050</td><td class="r loss">-$1.400</td><td class="r loss">-57.1%</td><td>FULL</td><td class="note-c">Discretionary exit</td></tr>
+<tr><td class="num">25</td><td class="tk">AMZN</td><td>AUG21 $285/$295</td><td>8/10</td><td>8/11</td><td class="r">1</td><td class="r">$2.480</td><td class="r">$1.180</td><td class="r loss">-$1.300</td><td class="r loss">-52.4%</td><td>FULL</td><td class="note-c">GTC stop</td></tr>
+<tr><td class="num">24</td><td class="tk">COST</td><td>AUG21 $952.5/$962.5</td><td>7/30</td><td>8/11</td><td class="r">12</td><td class="r">$3.650</td><td class="r">$3.150</td><td class="r loss">-$0.500</td><td class="r loss">-13.7%</td><td>FULL</td><td class="note-c">Technical downgrade</td></tr>
+<tr><td class="num">23</td><td class="tk">DLR</td><td>AUG21 $195/$202.5</td><td>8/7</td><td>8/11</td><td class="r">4</td><td class="r">$2.050</td><td class="r">$1.010</td><td class="r loss">-$1.040</td><td class="r loss">-50.7%</td><td>FULL</td><td class="note-c">GTC stop</td></tr>
+<tr><td class="num">22</td><td class="tk">FCX</td><td>AUG21 $68/$74</td><td>8/5</td><td>8/12</td><td class="r">7</td><td class="r">$2.530</td><td class="r">$2.005</td><td class="r loss">-$0.525</td><td class="r loss">-20.8%</td><td>FULL</td><td class="note-c">-20% flag exit</td></tr>
+<tr><td class="num">21</td><td class="tk">LMT</td><td>AUG21 $600/$615</td><td>8/6</td><td>8/11</td><td class="r">5</td><td class="r">$2.700</td><td class="r">$4.650</td><td class="r win">+$1.950</td><td class="r win">+72.2%</td><td>FULL</td><td class="note-c">Locked in gains</td></tr>
+<tr><td class="num">20</td><td class="tk">NVDA</td><td>AUG21 $225/$235</td><td>8/6</td><td>8/10</td><td class="r">4</td><td class="r">$2.555</td><td class="r">$2.815</td><td class="r win">+$0.260</td><td class="r win">+10.2%</td><td>FULL</td><td class="note-c">Closed for gain</td></tr>
+<tr><td class="num">19</td><td class="tk">HWM</td><td>AUG21 $285/$300</td><td>7/28</td><td>8/6</td><td class="r">9</td><td class="r">$6.050</td><td class="r">$7.450</td><td class="r win">+$1.400</td><td class="r win">+23.1%</td><td>FULL</td><td class="note-c">Target-area exit</td></tr>
+<tr><td class="num">18</td><td class="tk">AMBA</td><td>AUG21 $82.5/$90</td><td>8/4</td><td>8/7</td><td class="r">3</td><td class="r">$2.850</td><td class="r">$4.400</td><td class="r win">+$1.550</td><td class="r win">+54.4%</td><td>FULL</td><td class="note-c">Target-area exit</td></tr>
+<tr><td class="num">17</td><td class="tk">RTX</td><td>AUG21 $215/$220</td><td>8/3</td><td>8/5</td><td class="r">2</td><td class="r">$2.450</td><td class="r">$2.350</td><td class="r loss">-$0.100</td><td class="r loss">-4.1%</td><td>FULL</td><td class="note-c">Bad fill MTC</td></tr>
+<tr><td class="num">16</td><td class="tk">HACK</td><td>AUG21 $106/$110</td><td>8/3</td><td>8/4</td><td class="r">1</td><td class="r">$1.900</td><td class="r">$2.950</td><td class="r win">+$1.050</td><td class="r win">+55.3%</td><td>FULL</td><td class="note-c">Target hit</td></tr>
+<tr><td class="num">15</td><td class="tk">XLE</td><td>AUG21 $58/$61</td><td>7/29</td><td>8/4</td><td class="r">6</td><td class="r">$1.240</td><td class="r">$1.175</td><td class="r loss">-$0.065</td><td class="r loss">-5.2%</td><td>FULL</td><td class="note-c">Thesis-driven exit</td></tr>
+<tr><td class="num">14</td><td class="tk">JPM</td><td>AUG21 $350/$360</td><td>7/30</td><td>8/4</td><td class="r">5</td><td class="r">$4.550</td><td class="r">$6.730</td><td class="r win">+$2.180</td><td class="r win">+47.9%</td><td>FULL</td><td class="note-c">Target hit</td></tr>
+<tr><td class="num">13</td><td class="tk">SQQQ</td><td>AUG21 $49/$52</td><td>7/29</td><td>7/30</td><td class="r">1</td><td class="r">$0.925</td><td class="r">$0.420</td><td class="r loss">-$0.505</td><td class="r loss">-54.6%</td><td><span class="half">HALF</span></td><td class="note-c">GTC stop</td></tr>
+<tr><td class="num">12</td><td class="tk">DDOG</td><td>AUG21 $255/$270</td><td>7/27</td><td>7/29</td><td class="r">2</td><td class="r">$5.975</td><td class="r">$7.900</td><td class="r win">+$1.925</td><td class="r win">+32.2%</td><td>FULL</td><td class="note-c">Target hit</td></tr>
+<tr><td class="num">11</td><td class="tk">SQQQ</td><td>AUG21 $43/$46</td><td>7/23</td><td>7/29</td><td class="r">6</td><td class="r">$1.005</td><td class="r">$1.525</td><td class="r win">+$0.520</td><td class="r win">+51.7%</td><td><span class="half">HALF</span></td><td class="note-c">Target hit</td></tr>
+<tr><td class="num">10</td><td class="tk">SCHW</td><td>AUG21 $100/$105</td><td>7/24</td><td>7/29</td><td class="r">5</td><td class="r">$2.415</td><td class="r">$3.675</td><td class="r win">+$1.260</td><td class="r win">+52.2%</td><td>FULL</td><td class="note-c">Target hit</td></tr>
+<tr><td class="num">9</td><td class="tk">HON</td><td>AUG21 $250/$265</td><td>7/28</td><td>7/29</td><td class="r">1</td><td class="r">$5.025</td><td class="r">$3.075</td><td class="r loss">-$1.950</td><td class="r loss">-38.8%</td><td>FULL</td><td class="note-c">Manual above stop</td></tr>
+<tr><td class="num">8</td><td class="tk">KRE</td><td>AUG21 bank spread</td><td>7/24</td><td>7/28</td><td class="r">4</td><td class="r">$2.165</td><td class="r">$1.000</td><td class="r loss">-$1.165</td><td class="r loss">-53.8%</td><td>FULL</td><td class="note-c">GTC stop</td></tr>
+<tr><td class="num">7</td><td class="tk">XLF</td><td>AUG21 financial spread</td><td>7/24</td><td>7/28</td><td class="r">4</td><td class="r">$1.480</td><td class="r">$0.700</td><td class="r loss">-$0.780</td><td class="r loss">-52.7%</td><td>FULL</td><td class="note-c">GTC stop</td></tr>
+<tr><td class="num">6</td><td class="tk">EOG</td><td>AUG21 energy spread</td><td>7/21</td><td>7/27</td><td class="r">6</td><td class="r">$3.950</td><td class="r">$3.900</td><td class="r loss">-$0.050</td><td class="r loss">-1.3%</td><td>FULL</td><td class="note-c">Scratch &mdash; Iran</td></tr>
+<tr><td class="num">5</td><td class="tk">UNH</td><td>AUG21 $435/$445</td><td>7/21</td><td>7/23</td><td class="r">2</td><td class="r">$4.600</td><td class="r">$3.000</td><td class="r loss">-$1.600</td><td class="r loss">-34.8%</td><td>FULL</td><td class="note-c">Chart-stop</td></tr>
+<tr><td class="num">4</td><td class="tk">LNG</td><td>AUG21 $250/$270</td><td>7/16</td><td>7/23</td><td class="r">7</td><td class="r">$9.850</td><td class="r">$13.350</td><td class="r win">+$3.500</td><td class="r win">+35.5%</td><td>FULL</td><td class="note-c">Target-area</td></tr>
+<tr><td class="num">3</td><td class="tk">FANG</td><td>AUG21 $195/$205</td><td>7/13</td><td>7/22</td><td class="r">9</td><td class="r">$4.630</td><td class="r">$7.850</td><td class="r win">+$3.220</td><td class="r win">+69.5%</td><td>FULL</td><td class="note-c">Target hit</td></tr>
+<tr><td class="num">2</td><td class="tk">CRWD</td><td>AUG21 $205/$220</td><td>7/17</td><td>7/21</td><td class="r">4</td><td class="r">$5.900</td><td class="r">$4.200</td><td class="r loss">-$1.700</td><td class="r loss">-28.8%</td><td>FULL</td><td class="note-c">Stop</td></tr>
+<tr><td class="num">1</td><td class="tk">GD</td><td>AUG21 $360/$380</td><td>7/20</td><td>7/20</td><td class="r">0</td><td class="r">$8.750</td><td class="r">$11.900</td><td class="r win">+$3.150</td><td class="r win">+36.0%</td><td>FULL</td><td class="note-c">Target hit</td></tr>
+    </tbody>
+   </table>
+  </div>
+ </div>
+
+ <p class="fine">HALF-size trades are counted at full size above; adjusted for the nine HALF-size trades, net P/L since inception is +$855 (October: +$848). AIQ (#40) is excluded pending confirmed fills. Open positions are not included until closed. Subscriber fills will differ by broker and timing. Past performance does not guarantee future results. Options involve risk and are not suitable for all investors. This is not investment advice.</p>
+  </div>
+</section>
+<!-- END PAGE 8: TRACK RECORD -->
+
+<!-- ======================================================================
+     START PAGE 9: PRICING  (#pricing)
+     ====================================================================== -->
+<section class="s" id="pricing">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="kicker">Subscribe</span>
+      <h2 style="margin-top:18px">Pick your plan.</h2>
+      <p class="lede" style="margin-top:20px">Every plan gets the same A+ alerts. Higher tiers add depth, speed and support. Prices are announced soon; join the list to hear first.</p>
+    </div>
+    <div class="plans">
+      <article class="plan reveal">
+        <h3>Market Starter</h3><div class="price">Soon</div>
+        <p>For traders starting out with options.</p>
+        <ul><li>Every opening and closing alert</li><li>Daily market report</li><li>Weekend review</li></ul>
+        <a href="#contact" class="btn btn-ghost">Join the waitlist</a>
+      </article>
+      <article class="plan feat reveal">
+        <span class="tag">Most popular</span>
+        <h3>Market Professional</h3><div class="price">Soon</div>
+        <p>For active traders who want the full picture.</p>
+        <ul><li>Everything in Starter</li><li>Position tracking</li><li>Alerts in your language</li></ul>
+        <a href="#contact" class="btn btn-gold">Join the waitlist</a>
+      </article>
+      <article class="plan reveal">
+        <h3>Market Elite</h3><div class="price">Soon</div>
+        <p>For traders who want more depth.</p>
+        <ul><li>Everything in Professional</li><li>Custom alerts</li><li>Priority support</li></ul>
+        <a href="#contact" class="btn btn-ghost">Join the waitlist</a>
+      </article>
+      <article class="plan reveal">
+        <h3>Market Institutional</h3><div class="price">Talk to us</div>
+        <p>For firms and advisors.</p>
+        <ul><li>Everything in Elite</li><li>Autotrader setup</li><li>Dedicated contact</li></ul>
+        <a href="#contact" class="btn btn-ghost">Contact us</a>
+      </article>
+    </div>
+  </div>
+</section>
+<!-- END PAGE 9: PRICING -->
+
+<!-- ======================================================================
+     START PAGE 10: FAQ  (#faq)
+     ====================================================================== -->
+<section class="s" id="faq" style="padding-top:40px">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="kicker">Questions</span>
+      <h2 style="margin-top:18px">Straight answers.</h2>
+    </div>
+    <div class="faq">
+      <details><summary>Do you trade your own alerts?</summary><p>Yes. Every trade we recommend, we place ourselves in our own account at Schwab. The fill price on your alert is the price we actually got.</p></details>
+      <details><summary>Do you show your losing trades?</summary><p>Yes. Every closed trade goes on the record with its actual entry and exit fills, winners and losers alike. Losses are part of trading. Small, planned losses are how we stay in the game.</p></details>
+      <details><summary>What is a bull call debit spread?</summary><p>You buy one call and sell another at a higher strike, same expiry. It costs less than buying the call alone, and the most you can lose is what you paid to open it. The most you can make is the gap between the strikes minus that cost.</p></details>
+      <details><summary>How much money do I need?</summary><p>Spreads keep the cost per trade low, often a few hundred dollars per contract. Size every trade to your own account and never risk money you can't afford to lose.</p></details>
+      <details><summary>How fast do the alerts arrive?</summary><p>By email, the moment we act. You get the alert as we open or close a trade, then a confirmation with our actual fill prices, so you know exactly where we got in and out.</p></details>
+      <details><summary>Where does the AI end and the human begin?</summary><p>Our Python scanners and Claude do the searching, grading, pricing and checking, and a Bulkowski chart-pattern agent is in development. Mike Lesko reviews every setup and makes the final decision on every trade.</p></details>
+      <details><summary>Can I get alerts in my own language?</summary><p>Yes. Tell us your language when you sign up and your alerts and reports arrive translated. The numbers never change.</p></details>
+      <details><summary>Can an autotrader place the trades for me?</summary><p>Yes, through the autotrading services we work with. Ask us and we'll walk you through the setup.</p></details>
+      <details><summary>Is this personal financial advice?</summary><p>No. We publish our own trades and our reasons for them. What you trade, and how much, is always your decision.</p></details>
+    </div>
+  </div>
+</section>
+<!-- END PAGE 10: FAQ -->
+
+<!-- ======================================================================
+     START PAGE 11: CONTACT  (#contact)
+     ====================================================================== -->
+<section class="s" id="contact">
+  <div class="wrap contact">
+    <div class="reveal">
+      <span class="kicker">Get in touch</span>
+      <h2 style="margin-top:18px">Contact Us</h2>
+      <p class="lede" style="margin-top:18px">Join the waitlist, ask about a plan, or ask us anything. We reply personally.</p>
+      <ul class="cinfo">
+        <li>
+          <span class="ci" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span>
+          <div><h3>Call Us</h3><p>Leave your number in the form and we'll call you back.</p></div>
+        </li>
+        <li>
+          <span class="ci" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+          <div><h3>Location</h3><p>North Palm Beach, Florida. Serving traders worldwide, in any language.</p></div>
+        </li>
+        <li>
+          <span class="ci" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <div><h3>Business Hours</h3><p>Monday to Friday, 10 am to 8 pm ET<br>Saturday and Sunday, closed</p></div>
+        </li>
+      </ul>
+    </div>
+    <form id="form" class="reveal" novalidate>
+      <label>Email<input name="email" type="email" autocomplete="email" required placeholder="Enter a valid email address"></label>
+      <label>Name<input name="name" autocomplete="name" required placeholder="Enter your name"></label>
+      <label>Phone (optional)<input name="phone" type="tel" autocomplete="tel" placeholder="For a call back"></label>
+      <label>Country and language<input name="country" autocomplete="country-name" placeholder="e.g. Brazil, Portuguese"></label>
+      <label class="full">I'm interested in<select name="plan"><option>The waitlist</option><option>Market Starter</option><option>Market Professional</option><option>Market Elite</option><option>Market Institutional</option><option>Autotrading</option><option>Something else</option></select></label>
+      <label class="full">Message<textarea name="message" rows="4" placeholder="Enter your message"></textarea></label>
+      <button class="btn btn-gold submit" type="submit">Submit</button>
+      <div class="form-ok" role="status"><b>Thank you!</b> Your message has been sent. We'll reply within one business day.</div>
+      <div class="form-err" role="alert">Please add a valid email address and your name, then try again.</div>
+    </form>
+  </div>
+</section>
+<!-- END PAGE 11: CONTACT -->
+</main>
+
+<!-- ======================================================================
+     START FOOTER
+     ====================================================================== -->
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a href="#top" class="brand"><img src="assets/op-logo.png" alt="" width="52" height="52">Optionprincipal&nbsp;<span>AI</span></a>
+        <p>A guiding light for option traders since 2002. North Palm Beach, Florida.</p>
+      </div>
+      <nav aria-label="Footer">
+        <a href="#global">Services</a><a href="#pricing">Pricing</a>
+        <a href="#ai">How it works</a><a href="#faq">FAQ</a>
+        <a href="#track">Track record</a><a href="#contact">Contact</a>
+      </nav>
+    </div>
+    <p class="disclaimer">Option Principal AI publishes trade ideas for educational and informational purposes. It is not a registered investment adviser and nothing on this site is personal investment advice. Options involve significant risk and are not suitable for every investor. Past results do not guarantee future returns. Hero imagery is AI generated. © 2026 Option Principal AI.</p>
+  </div>
+</footer>
+<!-- ======================================================================
+     END FOOTER
+     ====================================================================== -->
+
+<script src="assets/main.js?v=20261007c"></script>
+<script type="module" src="assets/globe.js?v=20261007c"></script>
+</body>
+</html>
