@@ -63,8 +63,10 @@
     if (seekBusy) { pendingTime = t; return; }
     seekBusy = true; video.currentTime = t;
   }
-  video.addEventListener('seeked', () => { seekBusy = false; if (pendingTime !== null) { const t = pendingTime; pendingTime = null; requestSeek(t); } });
-  video.addEventListener('error', () => { seekBusy = false; pendingTime = null; failVideo(); });
+  if (video) {
+    video.addEventListener('seeked', () => { seekBusy = false; if (pendingTime !== null) { const t = pendingTime; pendingTime = null; requestSeek(t); } });
+    video.addEventListener('error', () => { seekBusy = false; pendingTime = null; failVideo(); });
+  }
 
   let cueShown = true;
   function updateCaptions(p, now) {
@@ -99,7 +101,8 @@
     target = heroProgress();
     if (rafId === null && heroOnScreen && scrubOn) rafId = requestAnimationFrame(tick);
   }
-  new IntersectionObserver(es => { heroOnScreen = es[0].isIntersecting; if (heroOnScreen) onScroll(); }).observe(hero);
+  // The lighthouse section may be parked in snippets/ (Oct 14, 2026); skip the scrub when it's absent
+  if (hero) new IntersectionObserver(es => { heroOnScreen = es[0].isIntersecting; if (heroOnScreen) onScroll(); }).observe(hero);
 
   function failVideo() { stage.classList.add('video-failed'); ring.style.display = 'none'; }
 
@@ -160,9 +163,11 @@
     if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; }
   }
   function applyHeroMode() { if (GATES.some(q => matchMedia(q).matches)) disableScrub(); else enableScrub(); }
-  const MQLS = GATES.map(q => matchMedia(q));
-  MQLS.forEach(m => m.addEventListener('change', applyHeroMode));
-  applyHeroMode();
+  if (hero) {
+    const MQLS = GATES.map(q => matchMedia(q));
+    MQLS.forEach(m => m.addEventListener('change', applyHeroMode));
+    applyHeroMode();
+  }
 
   /* ---------- Section reveals ---------- */
   const io = new IntersectionObserver(es => es.forEach(e => {
