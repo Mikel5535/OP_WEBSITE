@@ -321,7 +321,7 @@
       paths.forEach(p => p.dot.style.opacity = 0);
       $$('.reveal').forEach(el => el.classList.add('in', 'done'));
       clearInterval(trTimer); trTimer = null;
-    } else { applyHeroMode(); startFlow(); }
+    } else { if (hero) applyHeroMode(); startFlow(); }
   });
 })();
 
