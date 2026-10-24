@@ -16,7 +16,7 @@ const CITIES = [
   ['Hong Kong', 114.2, 22.3], ['Tokyo', 139.7, 35.7], ['Seoul', 127.0, 37.6], ['Sydney', 151.2, -33.9]
 ];
 
-const C = { sea: '#181826', rim: 'rgba(230,200,143,.55)', land: '#343448', landEdge: 'rgba(230,200,143,.35)',
+const C = { sea: '#202030', rim: 'rgba(230,200,143,.55)', land: '#343448', landEdge: 'rgba(230,200,143,.35)',
   grat: 'rgba(165,162,180,.09)', arc: 'rgba(230,200,143,', home: '#e6c88f', city: '#f8f9fa' };
 
 let land = null, size = 0, dpr = 1;
@@ -46,7 +46,7 @@ function draw(t) {
   // sea + soft inner shading
   ctx.beginPath(); path({ type: 'Sphere' });
   const g = ctx.createRadialGradient(size * 0.38, size * 0.32, size * 0.05, size / 2, size / 2, size / 2);
-  g.addColorStop(0, '#2a2a3e'); g.addColorStop(1, C.sea);
+  g.addColorStop(0, '#323248'); g.addColorStop(1, C.sea);
   ctx.fillStyle = g; ctx.fill();
   ctx.beginPath(); path(graticule); ctx.strokeStyle = C.grat; ctx.lineWidth = 0.7; ctx.stroke();
   if (land) {
