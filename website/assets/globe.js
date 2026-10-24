@@ -16,8 +16,8 @@ const CITIES = [
   ['Hong Kong', 114.2, 22.3], ['Tokyo', 139.7, 35.7], ['Seoul', 127.0, 37.6], ['Sydney', 151.2, -33.9]
 ];
 
-const C = { sea: '#202020', rim: 'rgba(201,162,39,.55)', land: '#363636', landEdge: 'rgba(201,162,39,.35)',
-  grat: 'rgba(160,160,160,.09)', arc: 'rgba(201,162,39,', home: '#c9a227', city: '#f8f9fa' };
+const C = { sea: '#0a1820', rim: 'rgba(185,201,211,.55)', land: '#1f3542', landEdge: 'rgba(185,201,211,.35)',
+  grat: 'rgba(150,170,180,.09)', arc: 'rgba(185,201,211,', home: '#b9c9d3', city: '#f8f9fa' };
 
 let land = null, size = 0, dpr = 1;
 const projection = d3.geoOrthographic().clipAngle(90).precision(0.4);
@@ -46,7 +46,7 @@ function draw(t) {
   // sea + soft inner shading
   ctx.beginPath(); path({ type: 'Sphere' });
   const g = ctx.createRadialGradient(size * 0.38, size * 0.32, size * 0.05, size / 2, size / 2, size / 2);
-  g.addColorStop(0, '#2c2c2c'); g.addColorStop(1, C.sea);
+  g.addColorStop(0, '#15303d'); g.addColorStop(1, C.sea);
   ctx.fillStyle = g; ctx.fill();
   ctx.beginPath(); path(graticule); ctx.strokeStyle = C.grat; ctx.lineWidth = 0.7; ctx.stroke();
   if (land) {
@@ -68,7 +68,7 @@ function draw(t) {
     // the travelling signal at the head of the route
     if (grow < 1 && visible(coords[coords.length - 1])) {
       const [x, y] = projection(coords[coords.length - 1]);
-      ctx.beginPath(); ctx.arc(x, y, 2.6, 0, Math.PI * 2); ctx.fillStyle = '#ffe08a'; ctx.fill();
+      ctx.beginPath(); ctx.arc(x, y, 2.6, 0, Math.PI * 2); ctx.fillStyle = '#eef5f8'; ctx.fill();
     }
     // city dot, with a ring that blooms when the signal lands
     if (visible(a.to)) {
@@ -86,7 +86,7 @@ function draw(t) {
     const [x, y] = projection(HOME);
     const pulse = RM.matches ? 0.5 : (t / 1600) % 1;
     ctx.beginPath(); ctx.arc(x, y, 4 + pulse * 14, 0, Math.PI * 2);
-    ctx.strokeStyle = `rgba(201,162,39,${(0.7 * (1 - pulse)).toFixed(3)})`; ctx.lineWidth = 1.5; ctx.stroke();
+    ctx.strokeStyle = `rgba(185,201,211,${(0.7 * (1 - pulse)).toFixed(3)})`; ctx.lineWidth = 1.5; ctx.stroke();
     ctx.beginPath(); ctx.arc(x, y, 4.2, 0, Math.PI * 2); ctx.fillStyle = C.home; ctx.fill();
   }
 }
