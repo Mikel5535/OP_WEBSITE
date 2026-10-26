@@ -451,16 +451,7 @@ section.s.company{padding:60px 0 70px}
 #track tbody tr:hover td{background:rgba(138,106,31,.08)}
 #pricing{border-bottom:7px solid var(--accent)}
 #pricing .kicker{color:var(--paper-gold)}
-#pricing .lede,#pricing .plan p,#pricing .plan ul,#pricing .plan .price small{color:var(--paper-muted)}
-#pricing .plan{background:var(--paper-card);border-color:var(--paper-line);box-shadow:0 1px 3px rgba(31,30,44,.06)}
-#pricing .plan:hover{border-color:var(--paper-gold)}
-#pricing .plan.feat{border-color:var(--paper-gold);background:linear-gradient(180deg,#fbf1d9,var(--paper-card))}
-#pricing .plan ul li::before{color:var(--paper-gold)}
-#pricing .plan .tag{background:var(--paper-ink);color:var(--accent)}
-#pricing .btn-gold{background:var(--paper-ink);color:var(--accent)}
-#pricing .btn-gold:hover{background:#34324a}
-#pricing .btn-ghost{border-color:rgba(31,30,44,.4);color:var(--paper-ink)}
-#pricing .btn-ghost:hover{border-color:var(--paper-gold);color:var(--paper-gold)}
+#pricing .lede{color:var(--paper-muted)}
 </style>
 <section class="s" id="track">
   <div class="wrap tr-wrap">
@@ -592,38 +583,75 @@ section.s.company{padding:60px 0 70px}
 <!-- ======================================================================
      START PAGE 9: PRICING  (#pricing)
      ====================================================================== -->
+<style>
+/* Pricing (Oct 26, 2026): tilted-tab cards from Mike's pricing-table reference, light brown in place
+   of the reference blue, on the cream "paper" background. Cards are the reference height (360px) + 150px. */
+#pricing{--tan:#d2b48c;--tan-light:#e8d5b9;--tan-dark:#7a5a3a;--tan-ink:#3e2c1e;--card-height:calc(360px + 150px)}
+#pricing .tilt-head{text-align:center}
+#pricing .tilt-head h2,#pricing .tilt-head .lede{margin-inline:auto}
+#pricing .tilt-rule{display:block;width:56px;height:4px;margin:22px auto 0;border-radius:2px;background:var(--tan)}
+#pricing .tilt-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:84px}
+#pricing .tilt-card{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;min-height:var(--card-height);padding:64px 24px 30px;background:var(--paper-card);color:var(--tan-dark);border-radius:22px;box-shadow:0 2px 6px rgba(62,44,30,.08),0 18px 40px rgba(62,44,30,.14);transition:translate .4s var(--ease-out)}
+#pricing .tilt-card:hover{translate:0 -6px}
+#pricing .tilt-card.feat{background:var(--tan);color:var(--tan-ink)}
+#pricing .tilt-tab{position:absolute;top:-22px;left:50%;width:82%;padding:12px 0;transform:translateX(-46%) rotate(-4deg);background:var(--tan);color:var(--tan-ink);font:600 15px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;border-radius:10px;box-shadow:0 6px 16px rgba(62,44,30,.18)}
+#pricing .feat .tilt-tab{background:var(--paper-card)}
+#pricing .tilt-pop{font:600 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--tan-ink);opacity:.8}
+#pricing .tilt-card h3{font-size:24px;color:inherit}
+#pricing .tilt-price{font:600 44px/1 var(--display);color:inherit}
+#pricing .tilt-price small{display:block;margin-top:6px;font:400 14px/1 var(--body);color:var(--paper-muted)}
+#pricing .tilt-card p{font-size:15px;color:var(--paper-muted)}
+#pricing .tilt-card ul{list-style:none;display:grid;gap:8px;font-size:15px;color:var(--paper-ink);flex:1;align-content:center}
+#pricing .tilt-card ul li::before{content:"✓";color:var(--tan-dark);margin-right:8px}
+#pricing .feat p,#pricing .feat .tilt-price small,#pricing .feat ul,#pricing .feat ul li::before{color:var(--tan-ink)}
+#pricing .tilt-btn{display:inline-block;padding:13px 40px;background:var(--tan);color:var(--tan-ink);font:600 16px/1 var(--body);border-radius:999px;transform:rotate(-4deg);transition:background .3s var(--ease-out)}
+#pricing .tilt-btn:hover{background:var(--tan-light)}
+#pricing .feat .tilt-btn{background:var(--paper-card)}
+#pricing .feat .tilt-btn:hover{background:var(--tan-light)}
+@media (max-width:1020px){#pricing .tilt-grid{grid-template-columns:1fr 1fr;row-gap:64px}}
+@media (max-width:620px){#pricing .tilt-grid{grid-template-columns:1fr}}
+</style>
 <section class="s" id="pricing">
   <div class="wrap">
-    <div class="reveal">
+    <div class="tilt-head reveal">
       <span class="kicker">Subscribe</span>
       <h2 style="margin-top:18px">Pick your plan.</h2>
+      <span class="tilt-rule" aria-hidden="true"></span>
       <p class="lede" style="margin-top:20px">Every plan gets the same A+ alerts. Higher tiers add depth, speed and support. Prices are announced soon; join the list to hear first.</p>
     </div>
-    <div class="plans">
-      <article class="plan reveal">
-        <h3>Market Starter</h3><div class="price">Soon</div>
+    <div class="tilt-grid">
+      <article class="tilt-card reveal">
+        <span class="tilt-tab">Starter</span>
+        <h3>Market Starter</h3>
+        <div class="tilt-price">Soon<small>/month</small></div>
         <p>For traders starting out with options.</p>
         <ul><li>Every opening and closing alert</li><li>Daily market report</li><li>Weekend review</li></ul>
-        <a href="#contact" class="btn btn-ghost">Join the waitlist</a>
+        <a href="#contact" class="tilt-btn">Subscribe</a>
       </article>
-      <article class="plan feat reveal">
-        <span class="tag">Most popular</span>
-        <h3>Market Professional</h3><div class="price">Soon</div>
+      <article class="tilt-card feat reveal">
+        <span class="tilt-tab">Professional</span>
+        <span class="tilt-pop">Most popular</span>
+        <h3>Market Professional</h3>
+        <div class="tilt-price">Soon<small>/month</small></div>
         <p>For active traders who want the full picture.</p>
         <ul><li>Everything in Starter</li><li>Position tracking</li><li>Alerts in your language</li></ul>
-        <a href="#contact" class="btn btn-gold">Join the waitlist</a>
+        <a href="#contact" class="tilt-btn">Subscribe</a>
       </article>
-      <article class="plan reveal">
-        <h3>Market Elite</h3><div class="price">Soon</div>
+      <article class="tilt-card reveal">
+        <span class="tilt-tab">Elite</span>
+        <h3>Market Elite</h3>
+        <div class="tilt-price">Soon<small>/month</small></div>
         <p>For traders who want more depth.</p>
         <ul><li>Everything in Professional</li><li>Custom alerts</li><li>Priority support</li></ul>
-        <a href="#contact" class="btn btn-ghost">Join the waitlist</a>
+        <a href="#contact" class="tilt-btn">Subscribe</a>
       </article>
-      <article class="plan reveal">
-        <h3>Market Institutional</h3><div class="price">Talk to us</div>
+      <article class="tilt-card reveal">
+        <span class="tilt-tab">Institutional</span>
+        <h3>Market Institutional</h3>
+        <div class="tilt-price">Talk to us</div>
         <p>For firms and advisors.</p>
         <ul><li>Everything in Elite</li><li>Autotrader setup</li><li>Dedicated contact</li></ul>
-        <a href="#contact" class="btn btn-ghost">Contact us</a>
+        <a href="#contact" class="tilt-btn">Subscribe</a>
       </article>
     </div>
   </div>
